@@ -1,57 +1,34 @@
-DESAFIO BIG DATA/BI
 
-📌 ESCOPO DO DESAFIO
-Neste desafio serão feitas as ingestões dos dados que estão na pasta /raw onde vamos ter alguns arquivos .csv de um banco relacional de vendas.
 
- - VENDAS.CSV
- - CLIENTES.CSV
- - ENDERECO.CSV
- - REGIAO.CSV
- - DIVISAO.CSV
+Este repositório contém os arquivos e código fonte para executar o Desafio Big Data/BI.
 
-Seu trabalho como engenheiro de dados/arquiteto de BI é prover dados em uma pasta desafio_curso/gold em .csv para ser consumido por um relatório em PowerBI que deverá ser construído dentro da pasta 'app' (já tem o template).
+Escopo do Desafio
+O objetivo do desafio é fazer a ingestão dos dados de um banco relacional de vendas em arquivos .csv na pasta /raw, executar processamento e transformações de dados utilizando Spark e Hive, e então gravar as informações em tabelas dimensionais em formato csv delimitado por ';' na pasta desafio_curso/gold. Por fim, um relatório em PowerBI deve ser criado para exibir gráficos de vendas.
 
-📑 ETAPAS
-Etapa 1 - Enviar os arquivos para o HDFS
-    - nesta etapa lembre de criar um shell script para fazer o trabalho repetitivo (não é obrigatório)
+Etapas
+Etapa 1: Enviar os arquivos para o HDFS
+Etapa 2: Criar o banco DESAFIO_CURSO e dentro tabelas no Hive usando o HQL e executando um script shell dentro do hive server na pasta scripts/pre_process.
+Etapa 3: Processar os dados no Spark efetuando suas devidas transformações criando os arquivos com a modelagem de BI.
+Etapa 4: Gravar as informações em tabelas dimensionais em formato cvs delimitado por ';'.
+Etapa 5: Exportar os dados para a pasta desafio_curso/gold
+Etapa 6: Criar e editar o PowerBI com os dados que você trabalhou. No PowerBI criar gráficos de vendas.
+Etapa 7: Criar uma documentação com os testes e etapas do projeto.
 
-Etapa 2 - Criar o banco DEASFIO_CURSO e dentro tabelas no Hive usando o HQL e executando um script shell dentro do hive server na pasta scripts/pre_process.
-
-    - DESAFIO_CURSO (nome do banco)
-        - TBL_VENDAS
-        - TBL_CLIENTES
-        - TBL_ENDERECO
-        - TBL_REGIAO
-        - TBL_DIVISAO
-
-Etapa 3 - Processar os dados no Spark Efetuando suas devidas transformações criando os arquivos com a modelagem de BI.
-OBS. o desenvolvimento pode ser feito no jupyter porem no final o codigo deve estar no arquivo desafio_curso/scripts/process/process.py
-
-Etapa 4 - Gravar as informações em tabelas dimensionais em formato cvs delimitado por ';'.
-
-        - FT_VENDAS
-        - DIM_CLIENTES
-        - DIM_TEMPO
-        - DIM_LOCALIDADE
-
-Etapa 5 - Exportar os dados para a pasta desafio_curso/gold
-
-Etapa 6 - Criar e editar o PowerBI com os dados que você trabalhou.
-
-No PowerBI criar gráficos de vendas.
-Etapa 7 - Criar uma documentação com os testes e etapas do projeto.
-
-REGRAS
+Regras
 Campos strings vazios deverão ser preenchidos com 'Não informado'.
 Campos decimais ou inteiros nulos ou vazios, deversão ser preenchidos por 0.
 Atentem-se a modelagem de dados da tabela FATO e Dimensão.
-Na tabela FATO, pelo menos a métrica <b>valor de venda</b> é um requisito obrigatório.
+Na tabela FATO, pelo menos a métrica valor de venda é um requisito obrigatório.
 Nas dimensões deverá conter valores únicos, não deverá conter valores repetidos.
 
-INSTRUÇÕES
-vocês deveram me entregar o projeto no github e por email (zip)
+Estrutura do Repositório
+/raw: contém os arquivos csv originais.
+/scripts: contém os scripts necessários para a execução do projeto.
+pre_process.sh: script shell para criar o banco de dados e as tabelas no Hive.
+process.py: script Python para processar os dados no Spark e gerar as tabelas dimensionais.
+/desafio_curso: contém as tabelas geradas pelo script process.py, bem como o relatório em PowerBI.
+/gold: contém as tabelas dimensionais geradas em formato csv delimitado por ';'.
+/app: contém o template do relatório em PowerBI.
 
-nome do email: DESAFIO MINSAIT BI/BIGDATA (Aluno)
-dentro deste email o zip e o link para o github onde estará o projeto.
-prazo: ate <b>08/04/2023<b>
-nesse caso não poderei aceitar atrasos na entrega.
+
+A documentação do projeto está disponível no arquivo DOCUMENTACAO.md. Ele contém os testes tanto no PowerBi quanto no spark para confirmação dos testes.
